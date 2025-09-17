@@ -146,7 +146,7 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('rodolphe')">
+                    <div class="video-preview" onclick="playVideo('mike')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/mike.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('mike')">
+                    <div class="video-preview" onclick="playVideo('dreamax')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/dreamax.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('claire')">
+                    <div class="video-preview" onclick="playVideo('raphael')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/raphael.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('sarah')">
+                    <div class="video-preview" onclick="playVideo('rt')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/rt.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -199,7 +199,7 @@
             <div class="reviews-grid">
                 <div class="review-card stagger-item">
                     <div class="review-header">
-                        <div class="reviewer-avatar">👨‍💼</div>
+                        <div class="reviewer-avatar"></div>
                         <div class="reviewer-info">
                             <h4>Thomas Dubois</h4>
                             <p>CEO • E-commerce Fashion</p>
@@ -213,7 +213,7 @@
                 </div>
                 <div class="review-card stagger-item">
                     <div class="review-header">
-                        <div class="reviewer-avatar">👩‍💻</div>
+                        <div class="reviewer-avatar2"></div>
                         <div class="reviewer-info">
                             <h4>Marie Lambert</h4>
                             <p>Fondatrice • SaaS B2B</p>
@@ -227,7 +227,7 @@
                 </div>
                 <div class="review-card stagger-item">
                     <div class="review-header">
-                        <div class="reviewer-avatar">👨‍🏥</div>
+                        <div class="reviewer-avatar3"></div>
                         <div class="reviewer-info">
                             <h4>Dr. Antoine Moreau</h4>
                             <p>Chirurgien • Clinique privée</p>
@@ -563,35 +563,56 @@ function playMainVideo() {
     document.body.appendChild(modal);
 }
 
-        function playVideo(clientName) {
-            const videos = {
-                'rodolphe': { title: 'Témoignage de Rodolphe Toupain - RT-Connecting', content: '🎥 Rodolphe explique comment il a multiplié son CA par 20 en 4 ans grâce à notre stratégie publicitaire...' },
-                'mike': { title: 'Témoignage de Mike - Bazehouse', content: '🎥 Mike partage son expérience sur les millions de vues obtenues et le ROI exceptionnel...' },
-                'claire': { title: 'Témoignage de Claire - Hypnothérapeute', content: '🎥 Claire détaille comment elle obtient maintenant 80+ RDV par mois de manière constante...' },
-                'sarah': { title: 'Témoignage de Sarah Martinez - Coach Business', content: '🎥 Sarah explique comment elle a triplé sa clientèle en 6 mois avec notre accompagnement...' }
-            };
-            const modal = document.createElement('div');
-            modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(20px); z-index: 10000; display: flex; align-items: center; justify-content: center; cursor: pointer; animation: fadeIn 0.3s ease;`;
-            const content = document.createElement('div');
-            content.style.cssText = `background: var(--black-card); border-radius: 24px; padding: 2.5rem; max-width: 500px; margin: 2rem; text-align: center; border: 1px solid rgba(188, 143, 52, 0.3); cursor: default; animation: scaleIn 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);`;
-            content.innerHTML = `
-                <h3 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.3rem;">${videos[clientName].title}</h3>
-                <p style="color: var(--gray-400); margin-bottom: 2rem; line-height: 1.6;">${videos[clientName].content}</p>
-                <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 1.5rem;">Intégrez ici vos vraies vidéos témoignages</p>
-                <button onclick="this.parentElement.parentElement.remove()" style="padding: 0.75rem 1.5rem; background: var(--gradient-gold); color: var(--black); border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">Fermer</button>
-            `;
-            const style = document.createElement('style');
-            style.textContent = `@keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }`;
-            document.head.appendChild(style);
-            content.addEventListener('click', (e) => e.stopPropagation());
-            modal.addEventListener('click', () => modal.remove());
-            modal.appendChild(content);
-            document.body.appendChild(modal);
+function playVideo(clientName) {
+    const videos = {
+        'mike': { 
+            title: 'Témoignage de Rodolphe Toupain - RT-Connecting', 
+            url: 'https://drive.google.com/file/d/1vnvGtAbEsZeCvJTooAdujkQmVQPdlHH8/preview'
+        },
+        'dreamax': { 
+            title: 'Témoignage de Mike - Bazehouse', 
+            url: 'https://drive.google.com/file/d/1_5n8F13O7dMX395KY3JiyhAUL09CF6xS/preview'
+        },
+        'raphael': { 
+            title: 'Témoignage de Claire - Hypnothérapeute', 
+            url: 'https://drive.google.com/file/d/1BtIMB6m5jHLt4IBSnwUalNDYadhcical/preview'
+        },
+        'rt': { 
+            title: 'Témoignage de Sarah Martinez - Coach Business', 
+            url: 'https://drive.google.com/file/d/1pQcQ6uTskgeyVYvfNENkZ-uPHSNV9A2E/preview'
         }
-
-        const calendlyScript = document.createElement('script');
-        calendlyScript.src = 'https://assets.calendly.com/assets/external/widget.js';
-        document.head.appendChild(calendlyScript);
+    };
+    
+    const modal = document.createElement('div');
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); z-index: 10000; display: flex; align-items: center; justify-content: center; cursor: pointer; animation: fadeIn 0.3s ease;`;
+    
+    const content = document.createElement('div');
+    content.style.cssText = `background: var(--black-card); border-radius: 24px; padding: 2rem; max-width: 900px; width: 90%; margin: 2rem; text-align: center; border: 1px solid rgba(188, 143, 52, 0.3); cursor: default; animation: scaleIn 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);`;
+    
+    content.innerHTML = `
+        <h3 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.4rem;">${videos[clientName].title}</h3>
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-bottom: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid rgba(188, 143, 52, 0.2);">
+            <iframe src="${videos[clientName].url}" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <button onclick="this.parentElement.parentElement.remove()" style="padding: 1rem 2rem; background: var(--gradient-gold); color: var(--black); border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: var(--shadow-gold);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Fermer</button>
+    `;
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    `;
+    document.head.appendChild(style);
+    
+    content.addEventListener('click', (e) => e.stopPropagation());
+    modal.addEventListener('click', () => modal.remove());
+    modal.appendChild(content);
+    document.body.appendChild(modal);
+}
     </script>
 </body>
         
