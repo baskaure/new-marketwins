@@ -857,6 +857,22 @@
     border-left-color: var(--black);
 }
 
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(1px);
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.video-preview:hover .video-overlay {
+    backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0.05);
+}
+
         .testimonial-info {
             text-align: center;
         }
