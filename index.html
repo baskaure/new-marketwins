@@ -581,7 +581,7 @@ function playMainVideo() {
         align-items: center; 
         justify-content: center; 
         cursor: pointer;
-        padding: 40px;
+        padding: 20px;
         box-sizing: border-box;
     `;
     
@@ -633,27 +633,64 @@ function playMainVideo() {
         </iframe>
     `;
     
-    // CSS pour le responsive
+    // CSS responsive avec orientation forcée sur mobile
     const style = document.createElement('style');
     style.textContent = `
-        @media (max-width: 1366px) {
+        .video-modal-content {
+            aspect-ratio: 16/9;
+        }
+        
+        /* Desktop et grand écrans */
+        @media (min-width: 1367px) {
+            .video-modal-content {
+                max-width: 1280px;
+                max-height: 720px;
+            }
+        }
+        
+        /* Laptop */
+        @media (max-width: 1366px) and (min-width: 769px) {
+            .video-modal-content {
+                max-width: 90vw;
+                max-height: calc(90vw * 9 / 16);
+            }
+        }
+        
+        /* Tablette paysage et mobile paysage */
+        @media (max-width: 768px) and (orientation: landscape) {
             .video-modal-content {
                 max-width: 95vw;
                 max-height: calc(95vw * 9 / 16);
             }
         }
         
-        @media (max-width: 768px) {
+        /* Mobile portrait - force le format paysage */
+        @media (max-width: 768px) and (orientation: portrait) {
             .video-modal-content {
                 max-width: 95vw;
                 max-height: calc(95vw * 9 / 16);
+                width: 95vw !important;
+                height: calc(95vw * 9 / 16) !important;
             }
         }
         
-        @media (max-height: 600px) {
+        /* Très petits écrans */
+        @media (max-width: 480px) {
+            .video-modal-content {
+                max-width: 95vw;
+                max-height: calc(95vw * 9 / 16);
+                width: 95vw !important;
+                height: calc(95vw * 9 / 16) !important;
+            }
+        }
+        
+        /* Écrans très bas */
+        @media (max-height: 500px) {
             .video-modal-content {
                 max-height: 85vh;
                 max-width: calc(85vh * 16 / 9);
+                width: calc(85vh * 16 / 9) !important;
+                height: 85vh !important;
             }
         }
     `;
