@@ -570,46 +570,46 @@ function openCalendly() {
 function playMainVideo() {
     const modal = document.createElement('div');
     modal.style.cssText = `
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-        background: rgba(0, 0, 0, 0.85); 
-        backdrop-filter: blur(20px); 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0, 0, 0, 0.9); 
         z-index: 10000; 
         display: flex; 
         align-items: center; 
         justify-content: center; 
         cursor: pointer;
-        animation: modalFadeIn 0.4s ease-out;
         padding: 20px;
         box-sizing: border-box;
     `;
     
     const content = document.createElement('div');
     content.style.cssText = `
-        background: #111111;
-        border-radius: 16px; 
-        padding: 0; 
-        max-width: 95vw; 
-        max-height: 90vh;
+        background: #000000;
+        border-radius: 8px; 
+        max-width: min(1200px, 95vw); 
+        max-height: min(800px, 90vh);
         width: 100%;
         cursor: default;
-        animation: modalSlideIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
         border: 1px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
+        position: relative;
         display: flex;
         flex-direction: column;
-        position: relative;
     `;
     
     content.innerHTML = `
-        <button onclick="closeVideoModal(this, event)" style="
+        <button onclick="closeVideoModal(event)" style="
             position: absolute;
             top: 15px;
             right: 15px;
             width: 40px; 
             height: 40px; 
             background: rgba(0, 0, 0, 0.8); 
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%; 
             color: #ffffff; 
             cursor: pointer; 
@@ -617,126 +617,58 @@ function playMainVideo() {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-        " onmouseover="this.style.background='rgba(188, 143, 52, 0.8)'; this.style.borderColor='rgba(188, 143, 52, 1)'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.8)'; this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.transform='scale(1)'">×</button>
+            z-index: 100;
+        " onmouseover="this.style.background='#BC8F34'; this.style.borderColor='#BC8F34'" onmouseout="this.style.background='rgba(0, 0, 0, 0.8)'; this.style.borderColor='rgba(255, 255, 255, 0.3)'">×</button>
 
         <div style="
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 1.5rem 4rem 1rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            flex-shrink: 0;
+            position: relative; 
+            width: 100%; 
+            height: 0; 
+            padding-bottom: 56.25%; 
+            background: #000;
         ">
-            <h3 style="color: #ffffff; font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; margin: 0; letter-spacing: -0.5px; text-align: center;">
-                Les Marketwins se présentent
-            </h3>
-        </div>
-        
-        <div style="flex: 1; display: flex; align-items: center; min-height: 0;">
-            <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000;">
-                <iframe src="https://drive.google.com/file/d/1F6iMFKNw5BKIbptNTuRwW8P06UqkdVOa/preview" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-        
-        <div style="padding: 1rem 1.5rem; flex-shrink: 0; text-align: center;">
-            <p style="
-                color: rgba(255, 255, 255, 0.7); 
-                font-size: clamp(0.85rem, 2vw, 0.95rem); 
-                line-height: 1.5; 
-                margin: 0 0 1rem 0;
-            ">
-                Découvrez notre vision et notre approche unique du marketing digital
-            </p>
-            
-            <button onclick="closeVideoModal(this, event)" style="
-                padding: 0.75rem 2rem; 
-                background: rgba(255, 255, 255, 0.1); 
-                color: #ffffff; 
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 50px; 
-                cursor: pointer; 
-                font-weight: 500;
-                font-size: 0.9rem;
-                transition: all 0.3s ease;
-                backdrop-filter: blur(10px);
-            " onmouseover="this.style.background='rgba(188, 143, 52, 0.2)'; this.style.borderColor='rgba(188, 143, 52, 0.5)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(255, 255, 255, 0.2)'">
-                Fermer
-            </button>
+            <iframe 
+                src="https://drive.google.com/file/d/1F6iMFKNw5BKIbptNTuRwW8P06UqkdVOa/preview" 
+                style="
+                    position: absolute; 
+                    top: 0; 
+                    left: 0; 
+                    width: 100%; 
+                    height: 100%; 
+                    border: none;
+                " 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
         </div>
     `;
     
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes modalSlideIn {
-            from { 
-                transform: translateY(20px) scale(0.95); 
-                opacity: 0;
-            }
-            to { 
-                transform: translateY(0) scale(1); 
-                opacity: 1;
-            }
-        }
-        
-        @keyframes modalSlideOut {
-            from { 
-                transform: translateY(0) scale(1); 
-                opacity: 1;
-            }
-            to { 
-                transform: translateY(20px) scale(0.95); 
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Fonction pour fermer le modal sans redirection
-    window.closeVideoModal = function(button, event) {
-        if (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        const modal = document.querySelector('[style*="position: fixed"][style*="z-index: 10000"]');
+    // Fonction pour fermer le modal
+    window.closeVideoModal = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const modal = document.body.querySelector('[style*="z-index: 10000"]');
         if (modal) {
-            modal.style.animation = 'modalSlideOut 0.3s ease forwards';
-            setTimeout(() => {
-                if (modal.parentNode) {
-                    modal.parentNode.removeChild(modal);
-                }
-            }, 300);
+            document.body.removeChild(modal);
         }
+        document.removeEventListener('keydown', handleEscape);
         return false;
     };
     
     // Gestion de la touche Echap
     const handleEscape = function(e) {
-        if (e.key === 'Escape' || e.keyCode === 27) {
-            closeVideoModal(null, e);
-            document.removeEventListener('keydown', handleEscape);
+        if (e.key === 'Escape') {
+            closeVideoModal(e);
         }
     };
     
-    // Ajouter l'écouteur pour Echap
     document.addEventListener('keydown', handleEscape);
     
+    // Empêcher la fermeture en cliquant sur la vidéo
     content.addEventListener('click', (e) => e.stopPropagation());
-    modal.addEventListener('click', (e) => {
-        closeVideoModal(null, e);
-        document.removeEventListener('keydown', handleEscape);
-    });
+    
+    // Fermer en cliquant sur le fond
+    modal.addEventListener('click', closeVideoModal);
     
     modal.appendChild(content);
     document.body.appendChild(modal);
