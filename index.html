@@ -150,7 +150,7 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('mike')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/mike.jpg'); background-size: cover; background-position: center;">
+                    <div class="video-preview" onclick="playVideo('mike')" style="background-image: url('images/mike.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('dreamax')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/dreamax.jpg'); background-size: cover; background-position: center;">
+                    <div class="video-preview" onclick="playVideo('dreamax')" style="background-image: url('images/dreamax.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -170,7 +170,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('raphael')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/raphael.jpg'); background-size: cover; background-position: center;">
+                    <div class="video-preview" onclick="playVideo('raphael')" style="background-image: url('images/raphael.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card stagger-item">
-                    <div class="video-preview" onclick="playVideo('rt')" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/rt.jpg'); background-size: cover; background-position: center;">
+                    <div class="video-preview" onclick="playVideo('rt')" style="background-image: url('images/rt.jpg'); background-size: cover; background-position: center;">
                         <div class="play-btn"></div>
                     </div>
                     <div class="testimonial-info">
@@ -728,26 +728,156 @@ function playVideo(clientName) {
     const videos = {
         'mike': { title: 'Témoignage de Mike', url: 'https://drive.google.com/file/d/1vnvGtAbEsZeCvJTooAdujkQmVQPdlHH8/preview' },
         'dreamax': { title: 'Témoignage de Dreamax', url: 'https://drive.google.com/file/d/1_5n8F13O7dMX395KY3JiyhAUL09CF6xS/preview' },
-        'raphael': { title: 'Témoignage de Raphael', url: 'https://drive.google.com/file/d/1BtIMB6m5jHLt4IBSnwUalNDYadhcical/preview' },
+        'raphael': { title: 'Témoignage de Raphael', url: 'https://drive.google.com/file/d/1BtIMB6m5jHLt4IBSnwUalNDYadhcicial/preview' },
         'rt': { title: 'Témoignage RT-Connecting', url: 'https://drive.google.com/file/d/1pQcQ6uTskgeyVYvfNENkZ-uPHSNV9A2E/preview' }
     };
     
     const modal = document.createElement('div');
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); z-index: 10000; display: flex; align-items: center; justify-content: center; cursor: pointer; animation: fadeIn 0.3s ease;`;
-    const content = document.createElement('div');
-    content.style.cssText = `background: var(--black-card); border-radius: 24px; padding: 2rem; max-width: 900px; width: 90%; margin: 2rem; text-align: center; border: 1px solid rgba(188, 143, 52, 0.3); cursor: default; animation: scaleIn 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);`;
-    content.innerHTML = `
-        <h3 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.4rem;">${videos[clientName].title}</h3>
-        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-bottom: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid rgba(188, 143, 52, 0.2);">
-            <iframe src="${videos[clientName].url}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        <button onclick="this.parentElement.parentElement.remove()" style="padding: 1rem 2rem; background: var(--gradient-gold); color: var(--black); border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: var(--shadow-gold);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Fermer</button>
+    modal.style.cssText = `
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0, 0, 0, 0.9); 
+        z-index: 10000; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer;
+        padding: 20px;
+        box-sizing: border-box;
     `;
+    
+    const content = document.createElement('div');
+    content.style.cssText = `
+        background: #000000;
+        border-radius: 8px; 
+        width: 100%;
+        height: 100%;
+        max-width: 1280px;
+        max-height: 720px;
+        cursor: default;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 16/9;
+    `;
+    
+    content.innerHTML = `
+        <button onclick="closeTestimonialModal(event)" style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px; 
+            height: 40px; 
+            background: rgba(0, 0, 0, 0.8); 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%; 
+            color: #ffffff; 
+            cursor: pointer; 
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        " onmouseover="this.style.background='#BC8F34'; this.style.borderColor='#BC8F34'" onmouseout="this.style.background='rgba(0, 0, 0, 0.8)'; this.style.borderColor='rgba(255, 255, 255, 0.3)'">×</button>
+
+        <iframe 
+            src="${videos[clientName].url}" 
+            style="
+                width: 100%; 
+                height: 100%; 
+                border: none;
+                object-fit: contain;
+            " 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    `;
+    
+    // CSS responsive identique à playMainVideo
     const style = document.createElement('style');
-    style.textContent = `@keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }`;
+    style.textContent = `
+        .testimonial-modal-content {
+            aspect-ratio: 16/9;
+        }
+        
+        @media (min-width: 1367px) {
+            .testimonial-modal-content {
+                max-width: 1280px;
+                max-height: 720px;
+            }
+        }
+        
+        @media (max-width: 1366px) and (min-width: 769px) {
+            .testimonial-modal-content {
+                max-width: 90vw;
+                max-height: calc(90vw * 9 / 16);
+            }
+        }
+        
+        @media (max-width: 768px) and (orientation: landscape) {
+            .testimonial-modal-content {
+                max-width: 95vw;
+                max-height: calc(95vw * 9 / 16);
+            }
+        }
+        
+        @media (max-width: 768px) and (orientation: portrait) {
+            .testimonial-modal-content {
+                max-width: 95vw;
+                max-height: calc(95vw * 9 / 16);
+                width: 95vw !important;
+                height: calc(95vw * 9 / 16) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .testimonial-modal-content {
+                max-width: 95vw;
+                max-height: calc(95vw * 9 / 16);
+                width: 95vw !important;
+                height: calc(95vw * 9 / 16) !important;
+            }
+        }
+        
+        @media (max-height: 500px) {
+            .testimonial-modal-content {
+                max-height: 85vh;
+                max-width: calc(85vh * 16 / 9);
+                width: calc(85vh * 16 / 9) !important;
+                height: 85vh !important;
+            }
+        }
+    `;
     document.head.appendChild(style);
+    content.className = 'testimonial-modal-content';
+    
+    // Fonction pour fermer le modal des témoignages
+    window.closeTestimonialModal = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const modal = document.body.querySelector('[style*="z-index: 10000"]');
+        if (modal) {
+            document.body.removeChild(modal);
+        }
+        document.removeEventListener('keydown', handleTestimonialEscape);
+        return false;
+    };
+    
+    // Gestion de la touche Echap pour témoignages
+    const handleTestimonialEscape = function(e) {
+        if (e.key === 'Escape') {
+            closeTestimonialModal(e);
+        }
+    };
+    
+    document.addEventListener('keydown', handleTestimonialEscape);
     content.addEventListener('click', (e) => e.stopPropagation());
-    modal.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', closeTestimonialModal);
+    
     modal.appendChild(content);
     document.body.appendChild(modal);
 }
